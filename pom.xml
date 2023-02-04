@@ -4,6 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
+		<!--  default compiler(specify java version), utf-8 encoding,
+		 for actual dependency will take version compatible with starter-->
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
