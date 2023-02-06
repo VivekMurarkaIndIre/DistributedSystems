@@ -2,6 +2,8 @@ package com.vivek.practice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * @SpringBootApplication is composed of following annotations
@@ -12,7 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * additonal configuration(@Configuration)=> able to register extra beans with @Bean or import other configuration classes
  */
 //@SpringBootApplication(scanBasePackages = {"com.bosch","com.vivek","com.oracle"})
-@SpringBootApplication
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@EnableJpaRepositories
 public class PracticeApplication {
 
 	public static void main(String[] args) {

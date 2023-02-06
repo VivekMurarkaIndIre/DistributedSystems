@@ -23,3 +23,6 @@
 | /sessions| Allows retrieval and deletion of user sessions from a Spring Session-backed session store. Not available when using Spring Session’s support for reactive web applications.|
 | /shutdown| Lets the application be gracefully shutdown.|
 | /threaddump| Performs a thread dump.|
+
+
+#### TO make our endpints secure we can exclude it or use spring security by validating authorized access

@@ -14,6 +14,7 @@ public class PracticeRestController {
     private String name;
 
     // expose "/" endpoint that return "Hello-world"
+    //@GetMapping - shortcut for @RequestMapping(method = RequestMethod.GET)
     @GetMapping("/")
     public String sayHello(){
         return "Hello world! My name is "+ name +". Time on server is "+ LocalDateTime.now();
