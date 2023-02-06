@@ -6,6 +6,7 @@ import com.vivek.practice.entity.Employee;
 import jakarta.persistence.EntityManager;
 
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 
@@ -19,7 +20,6 @@ import java.util.List;
  * Hibernate implementation
  */
 @Repository
-@Transactional
 public class EmployeeDAOImpl implements EmployeeDAO{
 
     //define fields for entity manager
@@ -41,6 +41,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         String jpql = "SELECT c FROM Employee c";
         TypedQuery<Employee> query = entityManager.createQuery(jpql, Employee.class);
 
+       // Query q2= entityManager.createQuery("from Employee");
+
         //execute query and get result
         List<Employee> employees = query.getResultList();
 
@@ -54,11 +56,20 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
     @Override
     public void save(Employee employee) {
-        entityManager.persist(employee);
+        //save or update if id=0
+        Employee dbEmployee= entityManager.merge(employee);
+
+        // update with id  from db..so we can use auto generate id
+        employee.setId(dbEmployee.getId());
     }
 
     @Override
     public void deleteByID(int id) {
 
+        Query  query = entityManager.createQuery("delete from Employee  where id=:employeeId");
+        //set the value of parameter employeeId in above query
+        query.setParameter("employeeId",id);
+
+        query.executeUpdate();
     }
 }

@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * additonal configuration(@Configuration)=> able to register extra beans with @Bean or import other configuration classes
  */
 //@SpringBootApplication(scanBasePackages = {"com.bosch","com.vivek","com.oracle"})
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication
 @EnableJpaRepositories
 public class PracticeApplication {
 

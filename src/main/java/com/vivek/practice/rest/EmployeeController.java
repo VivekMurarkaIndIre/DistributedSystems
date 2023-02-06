@@ -28,17 +28,17 @@ public class EmployeeController {
 
     //get employee by id
     @GetMapping("/employee/{employeeID}")
-    public  Employee getEmployee(@PathVariable int id){
-        Employee employee = employeeService.findById(id);
+    public  Employee getEmployee(@PathVariable int employeeID){
+        Employee employee = employeeService.findById(employeeID);
 
         if(employee == null){
-            throw new RuntimeException("Employee id not found:" + id);
+            throw new RuntimeException("Employee id not found:" + employeeID);
         }
         return employee;
     }
 
     //save employee to database
-    @PostMapping("/employee/{employeeId")
+    @PostMapping("/employee")
     public  Employee addEmployee(@RequestBody Employee employee){
         //to avoid using id from the request
         employee.setId(0);
