@@ -18,4 +18,10 @@ public class PracticeRestController {
     public String sayHello(){
         return "Hello world! My name is "+ name +". Time on server is "+ LocalDateTime.now();
     }
+
+    @GetMapping("/dev")
+    public String devTest(){
+        return "My dev tools takes this endpoint without restarting the server";
+    }
+
 }
