@@ -4,6 +4,7 @@ import com.vivek.practice.dao.EmployeeDAO;
 import com.vivek.practice.entity.Employee;
 import com.vivek.practice.service.EmployeeService;
 import com.vivek.practice.service.EmployeeServiceImpl;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class EmployeeController {
         Employee employee = employeeService.findById(employeeID);
 
         if(employee == null){
-            throw new RuntimeException("Employee id not found:" + employeeID);
+                throw new EntityNotFoundException("Cannot find element");
         }
         return employee;
     }
@@ -46,7 +47,7 @@ public class EmployeeController {
         return employee;
     }
 
-    @PutMapping("/employees")
+    @PutMapping("/employee")
     public  Employee updateEmployee(@RequestBody Employee employee){
 
         employeeService.save(employee);
@@ -58,12 +59,12 @@ public class EmployeeController {
         Employee employee = employeeService.findById(employeeID);
 
         if(employee == null){
-            throw new RuntimeException("Employee id not found:" + employeeID);
+            throw new EntityNotFoundException("Cannot find element");
         }
 
         employeeService.deleteByID(employeeID);
 
-        return "Deleted";
+        return "Record Deleted";
     }
 
 
