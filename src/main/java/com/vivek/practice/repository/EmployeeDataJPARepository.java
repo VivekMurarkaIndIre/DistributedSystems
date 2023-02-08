@@ -1,4 +1,4 @@
-package com.vivek.practice.dao;
+package com.vivek.practice.repository;
 
 import com.vivek.practice.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
